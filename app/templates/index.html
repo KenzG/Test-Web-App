@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Cipher Tool</title>
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light-gray">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 transition-colors duration-200">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100">
+                    Advanced Cipher Tool
+                </h1>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Encrypt and decrypt text using various classical cipher implementations
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Cipher Type Selection -->
+                <div class="form-group">
+                    <label for="cipher-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Cipher Type
+                    </label>
+                    <select id="cipher-type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option value="standard">Standard Vigenere (26 Alphabet)</option>
+                        <option value="autokey">Auto-Key Vigenere</option>
+                        <option value="extended">Extended Vigenere (256 ASCII)</option>
+                        <option value="playfair">Playfair Cipher</option>
+                        <option value="affine">Affine Cipher</option>
+                    </select>
+                    <div id="cipher-info" class="text-sm text-gray-500 dark:text-gray-400 mt-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-md">
+                        Classic implementation using 26 alphabet characters
+                    </div>
+                    <div id="cipher-description" class="text-sm text-gray-500 dark:text-gray-400 mt-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-md">
+                        Select a cipher type to see its description
+                    </div>
+                </div>
+
+                <!-- Text Input Section -->
+                <div id="text-input-section" class="form-group">
+                    <label for="input-text" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Input Text
+                    </label>
+                    <textarea id="input-text" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" 
+                              placeholder="Enter text to encrypt/decrypt"></textarea>
+                    <div class="flex justify-between mt-1">
+                        <span id="text-counter" class="text-sm text-gray-500 dark:text-gray-400">0 characters</span>
+                        <button onclick="clearInput('input-text')" class="text-sm text-blue-500 hover:text-blue-600">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Key Input Section -->
+                <div class="form-group">
+                    <label for="key" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Encryption Key
+                    </label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input type="text" id="key" 
+                               class="block w-full rounded-md border-gray-300 shadow-sm"
+                               placeholder="Enter encryption key">
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span id="key-strength" class="text-sm text-gray-500 dark:text-gray-400">
+                            Key strength: None
+                        </span>
+                        <button onclick="generateKey()" id="generate-key" class="text-sm text-blue-500 hover:text-blue-600">
+                            Generate Random Key
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-4">
+                    <button id="encrypt-btn" class="flex-1 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                        Encrypt
+                    </button>
+                    <button id="decrypt-btn" class="flex-1 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors">
+                        Decrypt
+                    </button>
+                </div>
+
+                <!-- Output Section -->
+                <div class="form-group">
+                    <div class="flex justify-between items-center mb-2">
+                        <label for="output-text" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Output
+                        </label>
+                        <div class="space-x-2">
+                            <button onclick="copyOutput()" class="text-sm text-blue-500 hover:text-blue-600">
+                                Copy
+                            </button>
+                            <button onclick="downloadOutput()" class="text-sm text-blue-500 hover:text-blue-600">
+                                Download
+                            </button>
+                            <button onclick="clearOutput()" class="text-sm text-blue-500 hover:text-blue-600">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="output-text" rows="4" 
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" 
+                              readonly></textarea>
+                    <div class="flex justify-between mt-1">
+                        <span id="output-counter" class="text-sm text-gray-500 dark:text-gray-400">
+                            0 characters
+                        </span>
+                        <span id="processing-time" class="text-sm text-gray-500 dark:text-gray-400"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dark Mode Toggle -->
+            <div class="text-right mt-4">
+                <button onclick="toggleDarkMode()" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500">
+                    Toggle Dark Mode
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="static/js/cipher.js"></script>
+</body>
+</html>

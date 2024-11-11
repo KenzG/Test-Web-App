@@ -1,0 +1,244 @@
+/* Base styles */
+body {
+    background-color: #f3f4f6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Dark mode styles */
+.dark {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark .bg-white {
+    background-color: #2d2d2d;
+}
+
+/* Form controls with improved styling */
+textarea, 
+input[type="text"], 
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: all 0.15s ease-in-out;
+    margin-bottom: 0.5rem;
+}
+
+textarea:focus, 
+input[type="text"]:focus, 
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark textarea,
+.dark input[type="text"],
+.dark select {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #ffffff;
+}
+
+/* Key strength indicators */
+.key-strength {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.key-strength.weak {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.key-strength.medium {
+    background-color: #fef3c7;
+    color: #f59e0b;
+}
+
+.key-strength.strong {
+    background-color: #d1fae5;
+    color: #10b981;
+}
+
+/* Loading state with improved animation */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.375rem;
+}
+
+.dark .loading::after {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.loading::before {
+    content: "Processing...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #000;
+    animation: pulse 1.5s infinite;
+}
+
+.dark .loading::before {
+    color: #fff;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Improved button styles */
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Action buttons */
+.action-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+/* Cipher type info box */
+#cipher-info,
+#cipher-description {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.dark #cipher-info,
+.dark #cipher-description {
+    background-color: #374151;
+}
+
+/* Additional utility classes */
+.font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.text-2xs {
+    font-size: 0.65rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .space-x-4 {
+        flex-direction: column;
+    }
+    
+    .space-x-4 > * + * {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Affine cipher specific styles */
+.affine-key-input {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.affine-key-input input {
+    width: 50%;
+}
+
+/* Playfair matrix visualization (if needed) */
+.playfair-matrix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-top: 1rem;
+    background-color: #f3f4f6;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+}
+
+.dark .playfair-matrix {
+    background-color: #374151;
+}
+
+.matrix-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+}
+
+.dark .matrix-cell {
+    background-color: #1f2937;
+    border-color: #4b5563;
+}
+
+/* SweetAlert customization */
+.swal2-popup {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.dark .swal2-popup {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+.dark .swal2-title {
+    color: #ffffff !important;
+}
+
+.dark .swal2-html-container {
+    color: #e0e0e0 !important;
+}
